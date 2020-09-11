@@ -18,12 +18,9 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    // handle user request
     @GetMapping
     public String getCustomerPage(Model model) {
-        // update model for template
         model.addAttribute("allCustomers", customerService.getCustomers());
-        // choose HTML template
         return "customer";
     }
 
