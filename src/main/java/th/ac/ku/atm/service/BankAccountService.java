@@ -25,12 +25,4 @@ public class BankAccountService {
         return new ArrayList<>(this.bankAccountList);
     }
 
-    public BankAccount findBankAccount(int id) {
-        for (BankAccount bankAccount : bankAccountList) {
-            if (bankAccount.getId() == id)
-                return bankAccount;
-        }
-        return null;
-    }
-
 }
