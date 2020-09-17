@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Customer</title>
+    <link th:rel="stylesheet" th:href="@{css/bootstrap.min.css}">
 </head>
 <body>
+<div class="container">
     <h1>Register Customer</h1>
     <form th:action="@{/customer}" method="POST">
+        <div class="form-group">
+            <label for="id">Id</label>
+            <input type="input" class="form-control" name="id" id="id">
+        </div>
 
-        <label for="id">Id</label>
-        <input type="input" name="id" id="id">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="input" name="name" id="name">
+        </div>
 
-        <label for="name">Name</label>
-        <input type="input" name="name" id="name">
-
-        <label for="pin">Pin</label>
-        <input type="password" name="pin" id="pin">
+        <div class="form-group">
+            <label for="pin">Pin</label>
+            <input type="password" name="pin" id="pin">
+        </div>
 
         <input type="submit">
     </form>
@@ -23,14 +30,15 @@
     <hr/>
 
     <h1>All customers</h1>
-    <table border="1px">
-        <thead>
+    <table class="table table-bordered">
+        <thead class="thead-light">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Pin</th>
             </tr>
         </thead>
+
         <tbody>
             <tr th:each=" customer: ${allCustomers} ">
                 <td th:text="${customer.id}"></td>
@@ -38,6 +46,7 @@
                 <td th:text="${customer.pin}"></td>
             </tr>
         </tbody>
+        
     </table>
 </body>
 </html>
