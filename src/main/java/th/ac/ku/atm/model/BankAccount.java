@@ -42,13 +42,6 @@ public class BankAccount {
         this.balance = balance;
     }
 
-    public BankAccount(int id, int customerId, String type, double balance) {
-        this.id = id;
-        this.customerId = customerId;
-        this.type = type;
-        this.balance = balance;
-    }
-
     @Override
     public String toString() {
         return "BankAccount{" +

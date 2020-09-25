@@ -7,11 +7,6 @@
     <h1>Open Bank Account</h1>
     <form action="#" th:action="@{/bankaccount}" method="POST">
         <div class="form-group">
-            <label for="inputId">Id</label>
-            <input type="input" class="form-control" name="id" id="inputId">
-        </div>
-
-        <div class="form-group">
             <label for="inputCustomerId">Customer Id</label>
             <input type="input" class="form-control" name="customerId" id="inputCustomerId">
         </div>
@@ -33,8 +28,8 @@
     <hr>
 
     <h1>All Bank Accounts</h1>
-    <table class="table table-bordered">
-        <thead class="thead-light">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
         <tr>
             <th>Id</th>
             <th>CustomerId</th>
