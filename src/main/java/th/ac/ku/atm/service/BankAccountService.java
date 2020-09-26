@@ -4,6 +4,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import th.ac.ku.atm.model.BankAccount;
+import th.ac.ku.atm.model.Transaction;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,10 +53,10 @@ public class BankAccountService {
         return response.getBody();
     }
 
-    public void editBankAccount(BankAccount bankAccount) {
-        String url = "http://localhost:8091/api/bankaccount/" +
-                bankAccount.getId();
-        restTemplate.put(url, bankAccount);
+    public void makeTransaction(Transaction transaction) {
+        String url = "http://localhost:8091/api/bankaccount/transaction/" +
+                transaction.getBankAccountId();
+        restTemplate.put(url, transaction);
     }
 
     public void deleteBankAccount(BankAccount bankAccount) {
