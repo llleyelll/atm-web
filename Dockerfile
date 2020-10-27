@@ -1,5 +1,10 @@
-FROM openjdk:8-jdk-alpine
+FROM maven:3.6.1-jdk-8
+WORKDIR /usr/atm-web
+COPY pom.xml .
+# download all required dependencies into one layer
+RUN mvn -B dependency:resolve dependency:resolve-plugins
+COPY src ./src/
+RUN mvn compile
+
 EXPOSE 8090
-ARG JAR_FILE=target/atm-0.0.1-SNAPSHOT.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+CMD ["mvn", "spring-boot:run"]
