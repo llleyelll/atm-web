@@ -13,13 +13,14 @@ import java.util.List;
 public class BankAccountService {
 
     private RestTemplate restTemplate;
+    private String baseUrl = "http://bankaccount-api:8091/api/bankaccount/";
 
     public BankAccountService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
     public List<BankAccount> getCustomerBankAccount(int customerId) {
-        String url = "http://localhost:8091/api/bankaccount/customer/" + customerId;
+        String url = baseUrl + "customer/" + customerId;
         ResponseEntity<BankAccount[]> response =
                 restTemplate.getForEntity(url, BankAccount[].class);
 
@@ -29,7 +30,7 @@ public class BankAccountService {
     }
 
     public List<BankAccount> getBankAccounts() {
-        String url = "http://localhost:8091/api/bankaccount/";
+        String url = baseUrl;
 
         ResponseEntity<BankAccount[]> response =
                 restTemplate.getForEntity(url, BankAccount[].class);
@@ -39,13 +40,13 @@ public class BankAccountService {
     }
 
     public void openBankAccount(BankAccount bankAccount) {
-        String url = "http://localhost:8091/api/bankaccount";
+        String url = baseUrl;
 
         restTemplate.postForObject(url, bankAccount, BankAccount.class);
     }
 
     public BankAccount getBankAccount(int id) {
-        String url = "http://localhost:8091/api/bankaccount/" + id;
+        String url = baseUrl + id;
 
         ResponseEntity<BankAccount> response =
                 restTemplate.getForEntity(url, BankAccount.class);
@@ -54,14 +55,12 @@ public class BankAccountService {
     }
 
     public void makeTransaction(Transaction transaction) {
-        String url = "http://localhost:8091/api/bankaccount/transaction/" +
-                transaction.getBankAccountId();
+        String url = baseUrl + "transaction/" + transaction.getBankAccountId();
         restTemplate.put(url, transaction);
     }
 
     public void deleteBankAccount(BankAccount bankAccount) {
-        String url = "http://localhost:8091/api/bankaccount/" +
-                bankAccount.getId();
+        String url = baseUrl + bankAccount.getId();
 
         restTemplate.delete(url, bankAccount);
     }
